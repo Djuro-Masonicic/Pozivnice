@@ -175,6 +175,11 @@ footer{
   animation:pulse 2s infinite;
 }
 
+.map-link{
+  display:block;
+  text-decoration:none;
+}
+
 @keyframes pulse{
   0%{transform:scale(1);}
   50%{transform:scale(1.2);}
@@ -248,14 +253,21 @@ footer{
     </p>
   </div>
 
-  <div class="map-section">
-    <h2>Lokacija događaja</h2>
-    <iframe
+<div class="map-section">
+  <h2>Lokacija događaja</h2>
+
+  <a 
+    href="https://www.google.com/maps/search/?api=1&query=Event+centar+Tasa+Pljevlja"
+    target="_blank"
+    class="map-link"
+  >
+    <iframe 
       src="https://www.google.com/maps?q=Event%20centar%20Tasa%20Pljevlja&output=embed"
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade">
     </iframe>
-  </div>
+  </a>
+</div>
 
   <!-- ✅ Footer na kraj -->
 <footer>
