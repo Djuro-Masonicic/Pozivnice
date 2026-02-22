@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tamara & Miljan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:"Montserrat", sans-serif;
+background:url("background.png");
+background-size:cover;
+background-repeat:no-repeat;
+background-position:left;
+color:#333;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* OVERLAY */
+
+.overlay{
+min-height:100vh;
+padding:60px 20px;
+}
+
+/* LOGO */
+
+.logo-container img{
+width:90vw;
+max-width:500px;
+height:auto;
+opacity:0;
+transform:scale(0.95);
+animation:logoFade 1.8s ease forwards;
+animation-delay:0.3s;
+}
+
+/* TITLE */
+
+h1{
+font-family:"Playfair Display", serif;
+font-size:52px;
+letter-spacing:4px;
+margin:30px 0;
+opacity:0;
+transform:translateY(30px);
+animation:titleFade 1.5s ease forwards;
+animation-delay:0.8s;
+}
+
+.amp{
+font-family:"Montserrat", sans-serif;
+font-weight:300;
+margin:0 8px;
+}
+
+/* DATE BLOCK */
+
+.date-block{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:20px;
+margin-top:40px;
+opacity:0;
+transform:translateY(30px);
+animation:fadeUp 1.5s ease forwards;
+animation-delay:1.3s;
+}
+
+.date-block .small{
+font-size:14px;
+letter-spacing:3px;
+}
+
+.date-block .big{
+font-size:42px;
+font-family:"Playfair Display", serif;
+}
+
+.date-block .line{
+width:1px;
+height:40px;
+background:#333;
+}
+
+.date-text{
+margin-top:20px;
+font-size:18px;
+line-height:1.6;
+opacity:0;
+transform:translateY(30px);
+animation:fadeUp 1.5s ease forwards;
+animation-delay:1.6s;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+font-size:30px;
+margin-top:40px;
+opacity:0;
+transform:translateY(30px);
+animation:fadeUp 1.5s ease forwards;
+animation-delay:1.9s;
+}
+
+/* INVITE TEXT */
+
+.invite-text{
+font-size:18px;
+line-height:1.9;
+margin-top:40px;
+opacity:0;
+transform:translateY(30px);
+animation:fadeUp 1.5s ease forwards;
+animation-delay:2.2s;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:120px;
+font-size:14px;
+opacity:0;
+animation:fadeIn 2s ease forwards;
+animation-delay:2.6s;
+}
+
+/* ANIMATIONS */
+
+@keyframes logoFade{
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+@keyframes titleFade{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeIn{
+to{
+opacity:0.8;
+}
+}
+
+/* MOBILE */
+
+@media (max-width:600px){
+h1{font-size:36px;}
+.countdown{font-size:22px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<p style="opacity:0; animation:fadeIn 2s ease forwards; animation-delay:0.5s;">
+Pozivamo Vas da svojim prisustvom uveličate naš poseban dan.
+</p>
+
+<div class="logo-container">
+<img src="logo.png" alt="TM monogram">
+</div>
+
+<h1>Tamara <span class="amp">&</span> Miljan</h1>
+
+<div class="date-block">
+<span class="small">MAJ</span>
+<span class="line"></span>
+<span class="big">02</span>
+<span class="line"></span>
+<span class="small">2026</span>
+</div>
+
+<div class="date-text">
+Početak u 14h<br>
+Event centar Taša, Pljevlja
+</div>
+
+<div class="countdown" id="countdown"></div>
+
+<div class="invite-text">
+<p>Molimo Vas da dolazak potvrdite do 10. aprila 2026. godine.</p>
+
+<p style="margin-top:40px;">
+S poštovanjem,<br>
+porodice Kečina i Vujanović
+</p>
+</div>
+
+<footer>
+Sa ljubavlju 🤍 Tamara & Miljan
+</footer>
+
+</div>
+
+<script>
+
+/* COUNTDOWN */
+
+const weddingDate = new Date("May 2, 2026 14:00:00").getTime();
+const countdown = document.getElementById("countdown");
+
+setInterval(()=>{
+const now = new Date().getTime();
+const distance = weddingDate - now;
+
+const days = Math.floor(distance/(1000*60*60*24));
+const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds = Math.floor((distance%(1000*60))/1000);
+
+if(distance>0){
+countdown.innerHTML=`${days} dana ${hours}h ${minutes}m ${seconds}s`;
+}else{
+countdown.innerHTML="Danas je naš dan 🤍";
+}
+
+},1000);
+
+</script>
+
+</body>
+</html>
